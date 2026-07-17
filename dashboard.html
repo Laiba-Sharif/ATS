@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | ResumeIQ AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet" href="assets/css/dashboard.css">
+
+</head>
+
+<body>
+
+
+<!-- Background -->
+
+<div class="bg1"></div>
+
+<div class="bg2"></div>
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>
+
+Resume<span>IQ AI</span>
+
+</h2>
+
+</div>
+
+<ul>
+
+<li class="active" id="navDashboard">
+    <i class="fa-solid fa-chart-pie"></i>
+    Dashboard
+</li >
+
+<li id="navAI">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Review
+
+</li>
+
+<li id="navKeyword">
+
+<i class="fa-solid fa-key"></i>
+
+Keywords
+
+</li>
+
+<li id="navResume">
+
+<i class="fa-solid fa-file"></i>
+
+Resume
+
+</li>
+
+<li id="navCareer">
+
+<i class="fa-solid fa-briefcase"></i>
+
+Career
+
+</li>
+
+<li id="navReport">
+
+<i class="fa-solid fa-download"></i>
+
+Report
+
+</li>
+
+</ul>
+
+</aside>
+
+
+
+<!-- Main -->
+
+<main class="main">
+
+
+<!-- Top -->
+
+<div class="topbar">
+
+<div>
+
+<h1>
+
+Resume Dashboard
+
+</h1>
+
+<p>
+
+AI Powered ATS Resume Intelligence
+
+</p>
+
+</div>
+
+<div class="user">
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+</div>
+
+
+
+<!-- Welcome -->
+
+<section class="welcome-card glass">
+
+<div>
+
+<h2>
+
+Welcome 👋
+
+</h2>
+
+<p>
+
+Your resume has been analyzed successfully.
+
+</p>
+
+</div>
+
+<div>
+
+<button class="download-btn">
+
+<i class="fa-solid fa-download"></i>
+
+Download Report
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- Score Cards -->
+
+<section class="cards">
+
+
+<div class="card glass">
+
+<h4>
+
+ATS Score
+
+</h4>
+
+<div class="score-circle">
+
+<span id="atsScore">
+
+0%
+
+</span>
+
+</div>
+
+<p>
+
+Excellent Resume
+
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h4>
+
+Interview Chance
+
+</h4>
+
+<h2 id="interviewChance">
+
+0%
+
+</h2>
+
+<div class="mini-progress">
+
+<div
+id="chanceBar"
+class="fill">
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h4>
+
+Resume Grade
+
+</h4>
+
+<h2 id="resumeGrade">
+
+A+
+
+</h2>
+
+<p>
+
+AI Evaluation
+
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h4>
+
+Grammar Score
+
+</h4>
+
+<h2 id="grammarScore">
+
+0%
+
+</h2>
+
+<div class="mini-progress">
+
+<div
+id="grammarBar"
+class="fill">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- Resume Overview -->
+
+<section class="overview glass">
+
+<h2>
+
+Resume Overview
+
+</h2>
+
+<div class="overview-grid">
+
+<div>
+
+<h4>
+
+Full Name
+
+</h4>
+
+<p id="userName">
+
+--
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Email
+
+</h4>
+
+<p id="userEmail">
+
+--
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Phone
+
+</h4>
+
+<p id="userPhone">
+
+--
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Job Role
+
+</h4>
+
+<p id="jobRoleText">
+
+--
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Report Date
+
+</h4>
+
+<p id="reportDate">
+
+--
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Resume Sections
+
+</h4>
+
+<p id="sectionCount">
+
+0
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= AI REVIEW ================= -->
+
+<section class="ai-review glass">
+
+    <div class="section-header">
+
+        <h2>
+            <i class="fa-solid fa-robot"></i>
+            AI Resume Review
+        </h2>
+
+        <span class="live-badge">
+            LIVE AI
+        </span>
+
+    </div>
+
+    <div id="aiTyping" class="typing-box">
+
+        AI is analyzing your resume...
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ANALYSIS ================= -->
+
+<section class="analysis-grid">
+
+
+    <!-- Matched Skills -->
+
+    <div class="glass analysis-card">
+
+        <h3>
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            Matched Skills
+
+        </h3>
+
+        <div id="matchedSkills" class="skill-container">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Missing Skills -->
+
+    <div class="glass analysis-card">
+
+        <h3>
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+            Missing Skills
+
+        </h3>
+
+        <div id="missingSkills" class="skill-container">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Resume Sections -->
+
+    <div class="glass analysis-card">
+
+        <h3>
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            Resume Sections
+
+        </h3>
+
+        <div id="resumeSections">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Grammar -->
+
+    <div class="glass analysis-card">
+
+        <h3>
+
+            <i class="fa-solid fa-language"></i>
+
+            Grammar Suggestions
+
+        </h3>
+
+        <ul id="grammarSuggestions">
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= AI SUGGESTIONS ================= -->
+
+<section class="glass">
+
+    <div class="section-header">
+
+        <h2>
+
+            AI Suggestions
+
+        </h2>
+
+    </div>
+
+    <div id="aiSuggestions" class="suggestion-grid">
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CAREER ================= -->
+
+<section class="career-section">
+
+    <div class="glass career-card">
+
+        <h2>
+
+            Career Recommendation
+
+        </h2>
+
+        <div id="careerSuggestions">
+
+        </div>
+
+    </div>
+
+
+
+    <div class="glass career-card">
+
+        <h2>
+
+            Learning Roadmap
+
+        </h2>
+
+        <div id="learningRoadmap">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RESUME IMPROVEMENT ================= -->
+
+<section class="glass rewrite-section">
+
+    <h2>
+
+        AI Resume Improvement
+
+    </h2>
+
+    <div class="rewrite-grid">
+
+        <div>
+
+            <h4>
+
+                Current Resume
+
+            </h4>
+
+            <div id="oldResume" class="rewrite-box">
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <h4>
+
+                AI Improved Resume
+
+            </h4>
+
+            <div id="newResume" class="rewrite-box">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DOWNLOAD ================= -->
+
+<section class="glass download-section">
+
+    <h2>
+
+        Export Analysis Report
+
+    </h2>
+
+    <p>
+
+        Download your complete ATS analysis report.
+
+    </p>
+
+    <button id="downloadReport" class="download-btn">
+
+        <i class="fa-solid fa-download"></i>
+
+        Download PDF
+
+    </button>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+<p>
+
+© 2026 ResumeIQ AI | AI Resume Intelligence Platform
+
+</p>
+
+</footer>
+
+
+<script src="assets/js/career.js"></script>
+<script src="assets/js/ai.js"></script>
+<script src="assets/js/dashboard.js"></script>
+
+ 
+
+
+</body>
+
+</html>
