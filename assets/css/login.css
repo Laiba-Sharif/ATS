@@ -18,7 +18,7 @@ body{
     justify-content:center;
     align-items:center;
 
-    overflow:hidden;
+
     position:relative;
     color:#fff;
 
@@ -387,7 +387,7 @@ body{
 @media(max-width:500px){
 
 .login-card{
-
+overflow: hidden;
     width:100%;
 
     padding:30px 20px;

@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Upload Resume | ResumeIQ AI</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/upload.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer</title>
+    <!-- FontAwesome for your icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/upload.css">
+    
+    <!-- CSS for Loading Screen & Progress Bar (Added to prevent styling breakage) -->
+    <style>
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999;
+        }
+        .loading-card {
+            background: #ffffff; padding: 32px; border-radius: 16px;
+            width: 90%; max-width: 400px; text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            font-family: inherit;
+        }
+        .spinner { font-size: 40px; color: #4F46E5; margin-bottom: 16px; }
+        .loading-card h2 { font-size: 18px; margin-bottom: 16px; color: #0F172A; }
+        .progress-bar-container { background: #F1F5F9; border-radius: 100px; height: 8px; width: 100%; overflow: hidden; margin-bottom: 8px; }
+        .progress-bar-fill { background: #4F46E5; height: 100%; width: 0%; transition: width 0.3s ease; }
+        .progress-subtext { font-size: 13px; color: #64748B; }
+    </style>
 </head>
-
 <body>
-
-<header>
+    
+<div class="navhead">
 
 <nav class="navbar">
 
@@ -38,288 +52,136 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <li><a href="#">Features</a></li>
 
 </ul>
+  <div class="nav-buttons">
+
+                <a href="login.html" class="login-btn">
+                    Login
+                </a>
+
+                <a href="signup.html" class="signup-btn">
+                    Sign Up
+                </a>
+
+            </div>
 
 </nav>
 
 </header>
 
-
-
-<section class="upload-page">
-
-<h1>Upload Your Resume</h1>
-
-<p>
-
-Upload your resume and receive an AI powered ATS analysis.
-
-</p>
-
-
-
-<!-- Upload Card -->
-
-<div class="upload-card" id="uploadCard">
-
-<label class="drop-zone" id="dropZone">
-
-<input
-type="file"
-id="resumeFile"
-accept=".pdf,.doc,.docx,.txt"
-hidden>
-
-<i class="fa-solid fa-cloud-arrow-up"></i>
-
-<h2>Drag & Drop Resume</h2>
-
-<p>PDF • DOCX • TXT</p>
-
-<button
-type="button"
-id="chooseBtn"
-class="primary-btn">
-
-Choose Resume
-
-</button>
-
-</label>
-
-
-
-<div
-class="selected-file"
-id="selectedFile"
-
-style="display:none;">
-
-<i class="fa-solid fa-file-lines"></i>
-
-<span id="fileName">
-
-No file selected
-
-</span>
-
-</div>
-
-</div>
-
-
-
-<!-- Resume Text -->
-
-<div class="resume-text-box">
-
-<h3>
-
-Or Paste Resume Text
-
-</h3>
-
-<textarea
-
-id="resumeText"
-
-placeholder="Paste your complete resume here...">
-
-</textarea>
-
-</div>
-<!-- ================= Job Role ================= -->
-
-<div class="job-role-box">
-
-    <h3>Select Job Role</h3>
-
-    <select id="jobRole">
-
-        <option value="">Select Job Role</option>
-
-        <option value="Frontend Developer">Frontend Developer</option>
-
-        <option value="Backend Developer">Backend Developer</option>
-
-        <option value="Full Stack Developer">Full Stack Developer</option>
-
-        <option value="Software Engineer">Software Engineer</option>
-
-        <option value="UI/UX Designer">UI/UX Designer</option>
-
-        <option value="Data Analyst">Data Analyst</option>
-
-        <option value="Mobile App Developer">Mobile App Developer</option>
-
-        <option value="DevOps Engineer">DevOps Engineer</option>
-
-        <option value="QA Engineer">QA Engineer</option>
-
-    </select>
-
-</div>
-
-
-<!-- ================= Job Description ================= -->
-
-<div class="job-box">
-
-    <h3>Paste Job Description</h3>
-
-    <textarea
-
-        id="jobDescription"
-
-        placeholder="Paste complete Job Description here...">
-
-    </textarea>
-
-</div>
-
-
-<!-- ================= Analysis Options ================= -->
-
-<div class="options">
-
-    <h3>Analysis Includes</h3>
-
-    <div class="option-list">
-
-        <label><input type="checkbox" checked> ATS Score</label>
-
-        <label><input type="checkbox" checked> Keyword Match</label>
-
-        <label><input type="checkbox" checked> Grammar Check</label>
-
-        <label><input type="checkbox" checked> Resume Formatting</label>
-
-        <label><input type="checkbox" checked> AI Suggestions</label>
-
-        <label><input type="checkbox" checked> Career Recommendation</label>
-
-    </div>
-
-</div>
-
-
-<!-- ================= Progress ================= -->
-
-<div class="analysis-progress">
-
-    <div class="progress-bar">
-
-        <div
-
-            class="progress-fill"
-
-            id="progressFill">
-
+   <div class="resume-layout">
+
+    <!-- LEFT SIDE: Upload & Core Actions -->
+    <div class="left-panel">
+        <div class="upload-card" id="uploadCard">
+            <label class="drop-zone" id="dropZone">
+                <input
+                    type="file"
+                    id="resumeFile"
+                    accept=".pdf,.doc,.docx,.txt"
+                    hidden>
+                
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <h2>Drag & Drop Resume</h2>
+                <p class="file-types">Supported formats: PDF • DOCX • TXT</p>
+                
+                <!-- Added id="chooseBtn" back so upload.js can bind click event correctly -->
+                <span id="chooseBtn" class="primary-btn fake-button">Choose Resume</span>
+            </label>
+
+            <div class="selected-file" id="selectedFile" style="display:none;">
+                <i class="fa-solid fa-file-lines"></i>
+                <span id="fileName">No file selected</span>
+            </div>
         </div>
 
+        <div class="analyze-box">
+            <button id="analyzeBtn" class="primary-btn analyze-btn">
+                Analyze Resume <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+        </div>
     </div>
 
-    <p id="progressText">
+    <!-- RIGHT SIDE: Text Inputs & Matching -->
+    <div class="right-panel">
+        <div class="input-group resume-text-box">
+            <h3>or Paste Resume Text</h3>
+            <textarea id="resumeText" placeholder="Paste your complete resume content here..."></textarea>
+        </div>
 
-        Waiting for resume...
+        <div class="input-group job-role-box">
+            <h3>Target Job Role</h3>
+            <div class="select-wrapper">
+                <select id="jobRole">
+                    <option value="" disabled selected>Select Job Role</option>
+                    <option>Frontend Developer</option>
+                    <option>Backend Developer</option>
+                    <option>Full Stack Developer</option>
+                    <option>Software Engineer</option>
+                    <option>UI/UX Designer</option>
+                    <option>Data Analyst</option>
+                    <option>Mobile App Developer</option>
+                    <option>DevOps Engineer</option>
+                    <option>QA Engineer</option>
+                </select>
+            </div>
+        </div>
 
-    </p>
-
-</div>
-
-
-<!-- ================= Analyze Button ================= -->
-
-<div class="analyze-box">
-
-    <button
-
-        id="analyzeBtn"
-
-        class="primary-btn analyze-btn">
-
-        Analyze Resume
-
-    </button>
-
-</div>
-
-
-<!-- ================= Upload Features ================= -->
-
-<div class="upload-features">
-
-    <div>
-
-        <i class="fa-solid fa-bolt"></i>
-
-        Fast AI Analysis
-
-    </div>
-
-    <div>
-
-        <i class="fa-solid fa-shield-halved"></i>
-
-        Secure Upload
-
-    </div>
-
-    <div>
-
-        <i class="fa-solid fa-chart-line"></i>
-
-        ATS Optimized
-
+        <div class="input-group job-box">
+            <h3>Paste Job Description</h3>
+            <textarea id="jobDescription" placeholder="Paste complete Job Description here to analyze matchmaking..."></textarea>
+        </div>
     </div>
 
 </div>
 
-</section>
-
-
-<!-- ================= Loading Screen ================= -->
-
-<div
-
-    id="loadingScreen"
-
-    class="loading-screen">
-
-    <div class="loader"></div>
-
-    <h2>
-
-        AI is analyzing your resume...
-
-    </h2>
-
-    <p id="loadingStatus">
-
-        Reading Resume...
-
-    </p>
-
+<!-- ======================================================== -->
+<!-- REQUIRED LOADING SCREEN ELEMENTS FOR upload.js           -->
+<!-- ======================================================== -->
+<div id="loadingScreen" class="loading-overlay" style="display: none;">
+    <div class="loading-card">
+        <div class="spinner">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </div>
+        <h2 id="loadingStatus">Processing Engines...</h2>
+        <div class="progress-bar-container">
+            <div id="progressFill" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <p id="progressText" class="progress-subtext">Initializing calculations...</p>
+    </div>
 </div>
 
 
-<!-- ================= Scripts ================= -->
+<!--  -->
 
+    <footer>
+
+        <h2>ResumeIQ AI</h2>
+
+        <p>
+
+            Smart Resume Intelligence Platform
+
+        </p>
+
+        <p>
+
+            © 2026 All Rights Reserved
+
+        </p>
+
+    </footer>
+
+<!-- Scripts Imported in Perfect Sequence -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
 <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
-
 <script src="assets/js/parser.js"></script>
-
 <script src="assets/js/skills.js"></script>
-
 <script src="assets/js/ats.js"></script>
-
 <script src="assets/js/grammar.js"></script>
-
 <script src="assets/js/ai.js"></script>
-
 <script src="assets/js/upload.js"></script>
 
 </body>
-
 </html>
