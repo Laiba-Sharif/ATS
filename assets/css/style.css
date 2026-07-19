@@ -44,6 +44,7 @@ body{
     font-family:'Poppins',sans-serif;
     background:var(--light);
     color:var(--dark);
+    overflow: hidden;
 
 }
 
@@ -1335,7 +1336,7 @@ Responsive Navbar
     }
 
     .nav-buttons{
-        display:none;
+        display:hidden;
     }
 
 }
