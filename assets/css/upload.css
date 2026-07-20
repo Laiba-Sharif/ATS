@@ -1,8 +1,4 @@
-/* ======================================================== */
-/* ResumeIQ AI - Premium Combined Stylesheet (No Overlaps)  */
-/* ======================================================== */
 
-/* 1. GLOBAL & VARIABLES CONFIG */
 :root {
     --primary: #4F46E5;
     --primary-hover: #4338CA;
@@ -43,7 +39,7 @@ body {
     color: var(--dark);
     min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Allows Navbar at top, grid below */
+    flex-direction: column;
     overflow-x: hidden;
 }
 
@@ -53,7 +49,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* 2. NAVBAR STYLES (Directly from style.css without overlaps) */
+
 header {
     position: sticky;
     top: 0;
@@ -131,7 +127,7 @@ header {
     box-shadow: 0 10px 20px rgba(79, 70, 229, .3);
 }
 
-/* 3. BACKGROUND BLOB SHAPES (From index.html) */
+
 .bg-shape {
     position: fixed;
     border-radius: 50%;
@@ -150,7 +146,7 @@ header {
     50% { transform: translateY(-30px); }
 }
 
-/* 4. MAIN LAYOUT GRID (The Centerpiece Workspace) */
+
 .resume-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -173,7 +169,7 @@ header {
     }
 }
 
-/* 5. WORKSPACE INTERNALS */
+
 .left-panel {
     display: flex;
     flex-direction: column;
@@ -242,7 +238,6 @@ header {
     margin-bottom: 24px;
 }
 
-/* BUTTON SYSTEMS */
 .primary-btn {
     background: linear-gradient(135deg, #4F46E5, #6366F1);
     color: #ffffff;
@@ -270,7 +265,7 @@ header {
     padding: 18px;
     font-size: 16px;
     letter-spacing: 0.02em;
-    border-radius: 50px; /* Matched to index primary-btn flow */
+    border-radius: 50px; 
 }
 
 .selected-file {
@@ -293,7 +288,6 @@ header {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* 6. INPUT FORMS DESIGN */
 .right-panel {
     display: flex;
     flex-direction: column;
@@ -371,7 +365,7 @@ select {
     .resume-layout { padding: 20px; }
 }
 
-/*  */
+
 
 /* FOOTER*/
 
@@ -379,7 +373,7 @@ footer{
 
     margin-top:120px;
 
-    background:#0F172A;
+ background-color: #4F46E5;
 
     color:white;
 
@@ -401,4 +395,22 @@ footer p{
 
     margin-top:10px;
 
+}
+
+
+
+/* responsive */
+@media (max-width: 900px) {
+    .navbar { position: relative; padding: 15px 0; }
+    .menu-toggle { display: block; z-index: 1001; }
+    
+    .nav-links {
+        position: fixed; top: 0; left: -100%; width: 75%; height: 100vh;
+        background: white; flex-direction: column; align-items: center;
+        justify-content: center; gap: 35px; padding: 40px 0;
+        box-shadow: 10px 0 30px rgba(0,0,0,0.15); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000; display: flex;
+    }
+    .nav-links.active { left: 0; }
+    .nav-buttons { display: none !important; } 
 }

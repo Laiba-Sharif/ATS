@@ -47,10 +47,9 @@
         </ul>
     </aside>
 
-    <!-- MAIN DASHBOARD CONTENT AREA -->
+
     <main class="main">
 
-        <!-- Top Header Navigation Bar -->
         <div class="topbar">
             <div>
                 <h1>Resume Dashboard</h1>
@@ -61,20 +60,18 @@
             </div>
         </div>
 
-        <!-- Dynamic Welcome Banner -->
         <section class="welcome-card glass">
             <div>
-                <h2>Welcome 👋</h2>
+                <h2>Welcome </h2>
                 <p>Your resume has been analyzed successfully.</p>
             </div>
             <div>
-                <button class="download-btn">
-                    <i class="fa-solid fa-download"></i> Download Report
-                </button>
+               <button id="downloadReport" class="download-btn">
+                <i class="fa-solid fa-download"></i> Download PDF
+            </button>
             </div>
         </section>
 
-        <!-- KPI Performance Score Cards -->
         <section class="cards">
             <div class="card glass">
                 <h4>ATS Score</h4>
@@ -138,7 +135,7 @@
             </div>
         </section>
 
-        <!-- AI Streaming Feedback Section -->
+    
         <section class="ai-review glass">
             <div class="section-header">
                 <h2><i class="fa-solid fa-robot"></i> AI Resume Review</h2>
@@ -149,34 +146,30 @@
             </div>
         </section>
 
-        <!-- Core Metric Breakdowns Analytical Grid -->
         <section class="analysis-grid">
-            <!-- Matched Skills Data Box -->
+
             <div class="glass analysis-card">
                 <h3><i class="fa-solid fa-circle-check"></i> Matched Skills</h3>
                 <div id="matchedSkills" class="skill-container"></div>
             </div>
-
-            <!-- Missing Skills Critical Box -->
             <div class="glass analysis-card">
                 <h3><i class="fa-solid fa-circle-xmark"></i> Missing Skills</h3>
                 <div id="missingSkills" class="skill-container"></div>
             </div>
 
-            <!-- Structure Parsed Check -->
             <div class="glass analysis-card">
                 <h3><i class="fa-solid fa-file-lines"></i> Resume Sections</h3>
                 <div id="resumeSections"></div>
             </div>
 
-            <!-- Linguistic Grammar Box -->
+    
             <div class="glass analysis-card">
                 <h3><i class="fa-solid fa-language"></i> Grammar Suggestions</h3>
                 <ul id="grammarSuggestions"></ul>
             </div>
         </section>
 
-        <!-- Dynamic Strategic Improvement Tips -->
+
         <section class="glass">
             <div class="section-header">
                 <h2>AI Suggestions</h2>
@@ -184,7 +177,7 @@
             <div id="aiSuggestions" class="suggestion-grid"></div>
         </section>
 
-        <!-- Career Strategy Framework Mapping -->
+        
         <section class="career-section">
             <div class="glass career-card">
                 <h2>Career Recommendation</h2>
@@ -197,7 +190,6 @@
             </div>
         </section>
 
-        <!-- Interactive Editor Optimization Workspace -->
         <section class="glass rewrite-section">
             <h2>AI Resume Improvement</h2>
             <div class="rewrite-grid">
@@ -223,7 +215,7 @@
 
     </main>
 
-    <!-- Global Platform Branding Footer -->
+    
     <footer>
         <p>© 2026 ResumeIQ AI | AI Resume Intelligence Platform</p>
     </footer>

@@ -110,7 +110,7 @@ header {
 .hero-right { flex: 1; display: flex; justify-content: center; }
 
 .badge {
-    display: inline-block; padding: 12px 22px; border-radius: 50px; background: rgba(79,70,229,.12);
+    display: inline-block; padding: 12px 22px; border-radius: 10px; background: rgba(79,70,229,.12);
     color: var(--primary); font-weight: 600; border: 1px solid rgba(79,70,229,.2); margin-bottom: 25px;
 }
 .hero h1 { font-size: 68px; font-weight: 800; line-height: 1.15; margin-bottom: 25px; }
@@ -156,10 +156,10 @@ header {
 .step h3 { font-size: 18px; color: var(--dark); }
 
 /* UPLOAD REGION FRAME */
-.upload-section { width: 90%; margin: 100px auto; display: flex; justify-content: center; }
+.upload-section { width: 80%; height: 40; margin: 100px auto; display: flex; justify-content: center; }
 .upload-box {
-    width: 100%; max-width: 700px; padding: 60px 30px; text-align: center; border: 3px dashed #4F46E5;
-    border-radius: 25px; background: white; transition: .4s; box-shadow: var(--shadow);
+    width: 50%; max-width: 600px; padding: 60px 30px; text-align: center; border: 3px dashed #4F46E5;
+    border-radius: 25px; background: rgb(247, 244, 244); transition: .4s; box-shadow: var(--shadow);
 }
 .upload-box:hover { border-color: #6366F1; box-shadow: 0 20px 40px rgba(79,70,229,.15); }
 .upload-box i { font-size: 70px; color: var(--primary); margin-bottom: 20px; animation: floatIcon 2.5s ease-in-out infinite; }
@@ -217,7 +217,7 @@ header {
 @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
 
 /* GLOBAL FOOTER STRUCT */
-footer { background: #0F172A; color: white; text-align: center; padding: 60px 20px; margin-top: 120px; width: 100%; }
+footer { background:#4F46E5 ; color: white; text-align: center; padding: 60px 20px; margin-top: 120px; width: 100%; }
 footer h2 { margin-bottom: 15px; font-weight: 800; }
 footer p { color: #CBD5E1; margin-top: 10px; }
 
@@ -256,7 +256,7 @@ button { cursor: pointer; font-family: inherit; }
         z-index: 1000; display: flex;
     }
     .nav-links.active { left: 0; }
-    .nav-buttons { display: none !important; } /* Hidden to avoid breaking layout grids */
+    .nav-buttons { display: none !important; } 
 }
 
 @media (max-width: 768px) {
@@ -277,3 +277,42 @@ button { cursor: pointer; font-family: inherit; }
     .upload-box { padding: 40px 20px; }
     .upload-box h2 { font-size: 24px; }
 }
+
+
+
+.about-section{
+    width:90%;
+    margin:30px auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.about-image{
+    flex:1;
+}
+
+.about-image img{
+    width:100%;
+    max-width:500px;
+}
+
+.about-content{
+    flex:1;
+}
+
+.about-content h2{
+    font-size:20px;
+    color:#222;
+    margin-bottom:10px;
+}
+
+.about-content p{
+    font-size:15px;
+    color:#666;
+    line-height:1.5;
+    margin-bottom:25px;
+}
+
+
